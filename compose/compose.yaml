@@ -1,0 +1,18 @@
+services:
+  server:
+    image: eclipse-temurin:17
+    command: java MainServer
+    working_dir: /opt/server
+    volumes:
+      - ./server:/opt/server
+  client:
+    image: eclipse-temurin:17
+    command: java MainClient
+    working_dir: /opt/client
+    volumes:
+      - ./client:/opt/client
+    depends_on:
+      server:
+        condition: service_started
+    deploy:
+      replicas: 20
