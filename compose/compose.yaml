@@ -1,16 +1,8 @@
 services:
   server:
-    image: eclipse-temurin:17
-    command: java MainServer
-    working_dir: /opt/server
-    volumes:
-      - ./server:/opt/server
+    image: curoviyxru/uselessprogram2:server
   client:
-    image: eclipse-temurin:17
-    command: java MainClient
-    working_dir: /opt/client
-    volumes:
-      - ./client:/opt/client
+    image: curoviyxru/uselessprogram2:client
     depends_on:
       server:
         condition: service_started
